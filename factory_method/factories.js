@@ -5,6 +5,7 @@ class AbstractAnimalFactory {
     return { name: 'DefaultName', type: 'DefaultType' };
   }
 }
+
 class RandomAnimalFactory extends AbstractAnimalFactory {
   animals = [Dog, Cat, Duck];
 
@@ -42,15 +43,4 @@ class BalancedAnimalFactory extends AbstractAnimalFactory {
   }
 }
 
-class AnimalFactory {
-
-  constructor(factory) {
-    this.factory = factory;
-  }
-
-  createAnimal(name) {
-    return this.factory.createAnimal(name);
-  }
-}
-
-module.exports = { RandomAnimalFactory, BalancedAnimalFactory, AnimalFactory };
+module.exports = { RandomAnimalFactory, BalancedAnimalFactory };
