@@ -1,6 +1,6 @@
 class AbstractAnimal {
   name = 'DefaultName';
-  type = 'DefaultType'
+  type = 'DefaultType';
 }
 class Dog extends AbstractAnimal {
   constructor(name) {

@@ -1,7 +1,9 @@
 const { Dog, Cat, Duck } = require('./animals');
 
 class AbstractAnimalFactory {
-  createAnimal() {}
+  createAnimal() {
+    return { name: 'DefaultName', type: 'DefaultType' };
+  }
 }
 class RandomAnimalFactory extends AbstractAnimalFactory {
   animals = [Dog, Cat, Duck];
@@ -19,6 +21,7 @@ class RandomAnimalFactory extends AbstractAnimalFactory {
     return Math.ceil(Math.random() * max);
   }
 }
+
 class BalancedAnimalFactory extends AbstractAnimalFactory {
   animals = [Dog, Cat, Duck];
   lastAnimalIndex = null;
@@ -39,4 +42,15 @@ class BalancedAnimalFactory extends AbstractAnimalFactory {
   }
 }
 
-module.exports = { RandomAnimalFactory, BalancedAnimalFactory };
+class AnimalFactory {
+
+  constructor(factory) {
+    this.factory = factory;
+  }
+
+  createAnimal(name) {
+    return this.factory.createAnimal(name);
+  }
+}
+
+module.exports = { RandomAnimalFactory, BalancedAnimalFactory, AnimalFactory };
